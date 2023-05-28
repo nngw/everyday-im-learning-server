@@ -1,5 +1,10 @@
-const helloWorld = () => {
-  console.log("hello world")
-}
+const { Router } = require('express');
+const controller = require('../controllers/index');
 
-helloWorld()
+const router = Router();
+
+//Routes 
+router.get('/', controller.index)
+
+
+module.exports = router
