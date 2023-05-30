@@ -1,6 +1,6 @@
 const client = require("../database/setup-db")
 
-class Users {
+class User {
     constructor(data) {
       this.username = data.username
       this.tasks = data.tasks
