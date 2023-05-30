@@ -1,6 +1,6 @@
 const client = require("../database/setup-db")
 
-class User {
+class Users {
     constructor(data) {
       this.username = data.username
       this.tasks = data.tasks
@@ -16,4 +16,4 @@ class User {
 
 }
 
-module.exports = User;
+module.exports = Users;
