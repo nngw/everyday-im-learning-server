@@ -1,4 +1,5 @@
 const Users = require('../models/index');
+const Tasks = require('../models/tasksModel');
 
 async function index(req, res) {
   try {
@@ -65,40 +66,40 @@ async function deleteTask (req, res) {
       res.status(404).json({"error": err.message})
   }
 }
-async function updateUser(req, res) {
-  try {
-    const id = parseInt(req.params.id);
-    const updatedData = req.body;
-    const updatedUser = await Users.updateUser(id, updatedData)
-    if (updatedUser) {
-      res.status(200).json(updatedUser);
-    } else {
-      res.status(404).json({ success: false, message: "Cannot find user" });
-    }
-  } catch (err) {
-    res
-      .status(500)
-      .json({ success: false, message: "Cannot update user", error: err });
-  }
-}
+// async function updateUser(req, res) {
+//   try {
+//     const id = parseInt(req.params.id);
+//     const updatedData = req.body;
+//     const updatedUser = await Users.updateUser(id, updatedData)
+//     if (updatedUser) {
+//       res.status(200).json(updatedUser);
+//     } else {
+//       res.status(404).json({ success: false, message: "Cannot find user" });
+//     }
+//   } catch (err) {
+//     res
+//       .status(500)
+//       .json({ success: false, message: "Cannot update user", error: err });
+//   }
+// }
 
-async function updateTask(req, res) {
-  try {
-    const userId = parseInt(req.params.id);
-    const taskId = parseInt(req.params.taskId);
-    const updatedData = req.body;
-    const updatedTask = await Users.updateTaskById(userId,
-      taskId, updatedData);
-      if (updatedTask) {
-        res.status(200).json(updatedTask);
-      } else {
-        res.status(404).json({ success: false, message: "Cannot find task" });
-      }
-  } catch (err) {
-    res.status(500).json({ success: false, message: "Cannot update task", error: err });
-  }
-}
+// async function updateTask(req, res) {
+//   try {
+//     const userId = parseInt(req.params.id);
+//     const taskId = parseInt(req.params.taskId);
+//     const updatedData = req.body;
+//     const updatedTask = await Users.updateTaskById(userId,
+//       taskId, updatedData);
+//       if (updatedTask) {
+//         res.status(200).json(updatedTask);
+//       } else {
+//         res.status(404).json({ success: false, message: "Cannot find task" });
+//       }
+//   } catch (err) {
+//     res.status(500).json({ success: false, message: "Cannot update task", error: err });
+//   }
+// }
 
 module.exports = {
-  index, getTasks, getTask, createTask, deleteUser, deleteTask, updateUser, updateTask 
+  index, getTasks, getTask, createTask, deleteUser, deleteTask 
 }
