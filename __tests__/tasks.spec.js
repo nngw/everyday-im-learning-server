@@ -2,17 +2,17 @@ const request = require('supertest')
 const app = require('../app')
 
 describe(' Tasks server', () => {
-  let appEnd
+  let testApp
 
   beforeAll(() => {
-    appEnd = app.listen(6000, () => {
+    testApp = app.listen(6000, () => {
       console.log('Test server running on port 6000')
     })
   })
 
   afterAll((done) => {
     console.log('stops test server')
-    appEnd.close(done)
+    testApp.close(done)
   })
 
   it('responds to get / with status 200', (done) => {
