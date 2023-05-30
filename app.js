@@ -3,14 +3,14 @@ const cors = require('cors');
 
 const app = express();
 
-const tasksRoutes = require('./routes/tasksRoutes')
+// const tasksRoutes = require('./routes/tasksRoutes')
 const userRoutes = require('./routes/userRoutes')
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/user', userRoutes)
-app.use('/tasks', tasksRoutes)
+// app.use('/tasks', tasksRoutes)
 
 
 app.get('/', (req, res) => {
