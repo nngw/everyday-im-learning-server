@@ -21,4 +21,4 @@ const tasksSchema = new Schema({
   }
 }, {timestamps: true})
 
-module.exports = mongoose.model('Workout', tasksSchema)
+module.exports = mongoose.model('Tasks', tasksSchema)
