@@ -35,7 +35,6 @@ class Users {
       return UserTask
     }
 
-
     //post users/id/tasks/id
     static async createUserTask(user_Id,task_Id, task_deets) {
       await client.connect()
@@ -64,29 +63,29 @@ class Users {
     return allUsers;
   }
 
-  static async updateUser(userId, updatedData) {
-    await client.connect();
-    const filter = { _id: userId };
-    const update = { $set: updatedData };
-    const options = { returnOriginal: false };
-    const result = await client
-      .db("protect-the-pandas")
-      .collection("users")
-      .findOneAndUpdate(filter, update, options);
-    return result.value;
-  }
+  // static async updateUser(user_Id, updatedData) {
+  //   await client.connect();
+  //   const filter = { _id: user_Id };
+  //   const update = { $set: updatedData };
+  //   const options = { returnOriginal: false };
+  //   const result = await client
+  //     .db("protect-the-pandas")
+  //     .collection("users")
+  //     .findOneAndUpdate(filter, update, options);
+  //   return result.value;
+  // }
 
-  static async updateTaskById(userId, taskId, updatedData) {
-    await client.connect();
-    const filter = { _id: userId, "tasks._id": taskId };
-    const update = { $set: { "tasks.$": updatedData } };
-    const options = { returnOriginal: false };
-    const result = await client
-      .db("protect-the-pandas")
-      .collection("users")
-      .findOneAndUpdate(filter, update, options);
-    return result.value;
-  }
+  // static async updateTaskById(user_Id, task_Id, updatedData) {
+  //   await client.connect();
+  //   const filter = { _id: user_Id, "tasks._id": task_Id };
+  //   const update = { $set: { "tasks.$": updatedData } };
+  //   const options = { returnOriginal: false };
+  //   const result = await client
+  //     .db("protect-the-pandas")
+  //     .collection("users")
+  //     .findOneAndUpdate(filter, update, options);
+  //   return result.value;
+  // }
 }
 
 module.exports = Users;
