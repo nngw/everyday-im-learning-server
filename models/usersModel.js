@@ -31,12 +31,14 @@ usersSchema.statics.signup = async function (email, password)  {
     throw Error('Password not strong enough')
   }
 
+  //Check if uses exists
   const exists = await this.findOne ({ email })
 
   if(exists) {
     throw Error('Email alredy exists')
   }
 
+  //Hash password and save user
   const salt = await bcrypt.genSalt(10)
 
   const hash = await bcrypt.hash(password, salt)
