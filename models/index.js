@@ -13,6 +13,13 @@ class Users {
       const allUsers = await res.toArray()
       return allUsers
     }
+    //get user by id
+    static async getUserById(id) {
+      await client.connect()
+      const res = client.db('protect-the-pandas').collection('users').find({id: [id]})
+      const user= await res.toArray()
+      return user
+    }
     //get /users/:id/tasks
     static async getUserTasks(id) {
       await client.connect()

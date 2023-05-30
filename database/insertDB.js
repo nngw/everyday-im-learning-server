@@ -6,7 +6,7 @@
 //         console.log("Awaiting...")
 //         await client.db('protect-the-pandas').collection('users').drop()
 //         await client.db('protect-the-pandas').collection('users').insertMany([
-//             {username: 'Nicole', password: 'password', tasks: 'Very important task', timer: 25.00},
+//             {username: 'Nicole', password: 'password', tasks: {['Very important task', timer: 25.00}, {info:'Very important task 2', timer: 25.00}]}
 //             {username: 'Sean', password: 'password', tasks: 'Very important task', timer: 25.00},
 //             {username: 'Angela', password: 'password', tasks: 'Very important task', timer: 25.00},
 //             {username: 'Thanushiyan', password: 'password', tasks: 'Very important task', timer: 25.00},

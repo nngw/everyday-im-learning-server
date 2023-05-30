@@ -11,10 +11,21 @@ async function index(req, res) {
   }
 }
 
+async function getUser(req, res) {
+  try {
+    const users = await Users.getAll();
+    res.status(200).json(users);
+  } catch (e) {
+    res
+      .status(500)
+      .json({ success: false, message: "Cannot find that user", error: e });
+  }
+}
+
 async function getTasks(req, res) {
   try {
-      const id = parseInt(req.params.user_id.task.task_id);
-      const tasks = await User.getAllUserTasks(id);
+      const id = parseInt(req.params.user_id);
+      const tasks = await User.getUserById(id);
       res.status(200).json(tasks)
   } catch(e) {
     res.status(500).json({ "success": false, "message": "Cannot find that user", "error": e })
@@ -100,5 +111,5 @@ async function updateTask(req, res) {
 }
 
 module.exports = {
-  index, getTasks, getTask, createTask, deleteUser, deleteTask, updateUser, updateTask 
+  index, getUser, getTasks, getTask, createTask, deleteUser, deleteTask, updateUser, updateTask 
 }

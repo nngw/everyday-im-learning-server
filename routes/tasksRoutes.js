@@ -4,7 +4,7 @@ const taskController = require('../controllers/index.js');
 
 const router = Router();
 
-// router.get('/', taskController.getUsers);
+router.get('/:user_id', taskController.getUser);
 router.get('/:user_id/tasks', taskController.getTasks);
 router.get('/:user_id/tasks/:task_id', taskController.getTask);
 //router.post('/:id', taskController.createUser);
