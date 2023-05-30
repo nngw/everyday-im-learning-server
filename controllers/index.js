@@ -28,7 +28,25 @@ async function updateUser(req, res) {
   }
 }
 
+async function updateTask(req, res) {
+  try {
+    const userId = req.params.id;
+    const taskId = req.params.taskId;
+    const updatedData = req.body;
+    const updatedTask = await Users.updateTaskById(userId,
+      taskId, updatedData);
+      if (updatedTask) {
+        res.status(200).json(updatedTask);
+      } else {
+        res.status(404).json({ success: false, message: "Cannot find task" });
+      }
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Cannot update task", error: err });
+  }
+}
+
 module.exports = {
   index,
   updateUser,
+  updateTask,
 };
