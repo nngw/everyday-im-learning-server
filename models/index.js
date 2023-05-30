@@ -25,5 +25,18 @@ class Users {
       .findOneAndUpdate(filter, update, options);
     return result.value;
   }
+
+  static async updateTaskById(userId, taskId, updatedData) {
+    await client.connect();
+    const filter = { _id: userId, "tasks._id": taskId };
+    const update = { $set: { "tasks.$": updatedData } };
+    const options = { returnOriginal: false };
+    const result = await client
+      .db("protect-the-pandas")
+      .collection("users")
+      .findOneAndUpdate(filter, update, options);
+    return result.value;
+  }
 }
+
 module.exports = Users;
