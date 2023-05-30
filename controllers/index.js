@@ -67,9 +67,9 @@ async function deleteTask (req, res) {
 }
 async function updateUser(req, res) {
   try {
-    const userId = req.params.id;
+    const id = parseInt(req.params.id);
     const updatedData = req.body;
-    const updatedUser = await Users.updateUser(userId, updatedData);
+    const updatedUser = await Users.updateUser(id, updatedData)
     if (updatedUser) {
       res.status(200).json(updatedUser);
     } else {
@@ -84,8 +84,8 @@ async function updateUser(req, res) {
 
 async function updateTask(req, res) {
   try {
-    const userId = req.params.id;
-    const taskId = req.params.taskId;
+    const userId = parseInt(req.params.id);
+    const taskId = parseInt(req.params.taskId);
     const updatedData = req.body;
     const updatedTask = await Users.updateTaskById(userId,
       taskId, updatedData);
