@@ -1,8 +1,9 @@
-const Users = require("../models/index");
+const User = require("../models/usersModel.js");
+const Task = require("../models/tasksModels.js")
 
 async function index(req, res) {
   try {
-    const users = await Users.getAll();
+    const users = await User.getAll();
     res.status(200).json(users);
   } catch (e) {
     res
@@ -11,21 +12,40 @@ async function index(req, res) {
   }
 }
 
+// async function getUser(req, res) {
+//   try {
+//     const id = parseInt(req.params.user_id)
+//     console.log(id)
+//     const users = await User.getUserById(id);
+//     // const users = await User.find({user_id: [id]})
+//     res.status(200).json(users);
+//   } catch (e) {
+//     res
+//       .status(500)
+//       .json({ success: false, message: "Cannot find the user", error: e });
+//   }
+// }
+
 async function getUser(req, res) {
   try {
-    const users = await Users.getAll();
-    res.status(200).json(users);
+    console.log("I work i guess")
+    const id = req._user_id
+    console.log(id)
+    //const user = await User.getUserById(id);
+    //user._id.toString()
+    const user = await User.findById(id)
+    res.status(200).json(user);
   } catch (e) {
     res
       .status(500)
-      .json({ success: false, message: "Cannot find that user", error: e });
+      .json({ success: false, message: "Cannot find the user", error: e });
   }
 }
 
 async function getTasks(req, res) {
   try {
       const id = parseInt(req.params.user_id);
-      const tasks = await User.getUserById(id);
+      const tasks = await User.geTaskById(id);
       res.status(200).json(tasks)
   } catch(e) {
     res.status(500).json({ "success": false, "message": "Cannot find that user", "error": e })
@@ -35,7 +55,7 @@ async function getTasks(req, res) {
 async function getTask(req, res) {
   try {
     const id = parseInt(req.params.user_id);
-    const users = await User.getTaskById(id);
+    const users = await User.getTaskById(ObjectId.isvalid(id));
       res.status(200).json(users)
   } catch(e) {
     res.status(500).json({ "success": false, "message": "Cannot find that user", "error": e })
@@ -80,7 +100,7 @@ async function updateUser(req, res) {
   try {
     const userId = req.params.id;
     const updatedData = req.body;
-    const updatedUser = await Users.updateUser(userId, updatedData);
+    const updatedUser = await User.updateUser(userId, updatedData);
     if (updatedUser) {
       res.status(200).json(updatedUser);
     } else {
