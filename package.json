@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --verbose",
     "dev": "nodemon -L index.js",
-    "db": "node ./database/insertDB.js"
+    "db": "node ./database/insertDB.js",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,8 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
+    "jsdom": "^22.1.0",
     "nodemon": "^2.0.22",
     "supertest": "^6.3.3"
   }

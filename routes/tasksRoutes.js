@@ -1,16 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 
-// const taskController = require('../controllers/tasksController');
+// const taskController = require('../controllers/index.js');
 
-const {
-  getTasks,
-  getTaskbyId,
-  createTask,
-  deleteTask,
-  markAsComplete,
-  updateTask
-} = require('../controllers/tasksController')
 
 // router.get('/', taskController.getUsers);
 // router.get('/:id/tasks', taskController.getTasks);
@@ -28,6 +20,17 @@ const {
 
 // const requireAuth = require('../middleware/requireAuth')
 // router.use(requireAuth)
+
+
+const {
+  getTasks,
+  getTaskbyId,
+  createTask,
+  deleteTask,
+  markAsComplete,
+  updateTask
+} = require('../controllers/tasksController')
+
 
 //Get workout by user
 router.get('/', getTasks)
