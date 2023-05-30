@@ -8,13 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.json({
-        title: "Welcome",
-        description: "Come back later for the see our progress"
-    })
-})
-
 app.use("/users", router);
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+  })
+
+  
 module.exports = app;
