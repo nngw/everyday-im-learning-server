@@ -1,4 +1,4 @@
-const client = require("../database/setup-db");
+const task = require("./tasksModels");
 
 class Users {
   constructor(data) {
@@ -7,12 +7,19 @@ class Users {
     this.timer = data.timer;
   }
 
-    static async getAll() {
-      await client.connect()
-      const res = client.db('protect-the-pandas').collection('users').find()
-      const allUsers = await res.toArray()
-      return allUsers
-    }
+    // static async getAll() {
+    //   await client.connect()
+    //   const res = client.db('protect-the-pandas').collection('users').find()
+    //   const allUsers = await res.toArray()
+    //   return allUsers
+    // }
+    //get user by id
+    // static async getUserById(id) {
+    //   //await client.connect()
+    //   const res = client.db('protect-the-pandas').collection('users').find({id: [id]})
+    //   const user= await res.toArray()
+    //   return user
+    // }
     //get /users/:id/tasks
     static async getUserTasks(id) {
       await client.connect()
