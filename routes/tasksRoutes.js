@@ -18,8 +18,8 @@ const router = Router();
 
 
 
-// const requireAuth = require('../middleware/requireAuth')
-// router.use(requireAuth)
+const requireAuth = require('../middleware/requireAuth')
+router.use(requireAuth)
 
 
 const {
