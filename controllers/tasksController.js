@@ -46,7 +46,6 @@ const createTask = async (req,res) => {
 
   try {
     const user_id = req.user._id
-    // const user_id = "64762e763566d44e0325fb99"
     const newTask = await Tasks.create({task, time, user_id})
     res.status(200).json(newTask)
   } catch (error) {
@@ -94,8 +93,6 @@ const markAsComplete = async (req, res) => {
 //Update
 const updateTask = async (req, res) => {
   const { id } = req.params
-
-  console.log('trying to patch')
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: 'No such task'})
