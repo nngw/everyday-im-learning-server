@@ -42,21 +42,6 @@ const signupUser = async (req, res) => {
   
 }
 
-// async function getUser(req, res) {
-//   try {
-//     const id = Users._id.toString()
-//     console.log(id)
-//     //const users = await User.getUserById(id);
-//     //user._id.toString()
-//     const user = await Users.findById(id)
-//     res.status(200).json(user);
-//   } catch (e) {
-//     res
-//       .status(500)
-//       .json({ success: false, message: "Cannot find the user", error: e });
-//   }
-// }
-
 module.exports = {
   signupUser, loginUser
 }

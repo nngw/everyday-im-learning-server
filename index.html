@@ -11,7 +11,43 @@
     <main>
         <div>
             <h2>Welcome to the API</h2>
+            <h3>Direct access to the endpoints is restricted and a valid token is required to access the API. Please use an API development ecosystem (ADE) such as <a href="https://hoppscotch.io/">hoppscotch</a> to access enpoints.</h3>
             <h2> Endpoints: </h2>
+            <h3>Users</h3>
+            <h4>This is required to generate a token for authentication and authourisation, please do this before accessing the tasks endpoint.<br>Only tasks create by you will be shown!</h4>
+            <ul>
+                <li><span><strong>Login with existing account: </strong> </span>https://protectthepanda-api.onrender.com/users/login</li>
+                <p>In the ADE send a <strong>POST</strong> request with a json in the following format:<br>
+                   &emsp;{"email": "YOUR-EMAIL-ADDRESS",<br>
+                   &emsp;"password": "YOUR-PASSWORD"} </p>
+                <li><span><strong>Create a new account account:</strong></span>https://protectthepanda-api.onrender.com/users/signup</li>
+                <p>In the ADE send a <strong>POST</strong> request with a json in the following format:<br>
+                    &emsp;{"email": "YOUR-EMAIL-ADDRESS",<br>
+                    &emsp;"password": "YOUR-PASSWORD"} </p>
+            </ul>
+            <h4>A token will be generated please copy this token for accessing tasks.</h4>
+
+            <h3>Tasks</h3>
+            <h4>Paste the token generated in to the ADE authentication section as a "token" to access tasks endpoints.<br>Access will not be granted without a valid token.</h4>
+            <ul>
+                <li><span><strong>Get all tasks: </strong></span>https://protectthepanda-api.onrender.com/tasks/</li>
+                <p>In the ADE send a <strong>GET</strong> request</p>
+                <li><span><strong>Get one task by ID: </strong></span>https://protectthepanda-api.onrender.com/tasks/:id</li>
+                <p>In the ADE send a <strong>GET</strong> request</p>
+                <li><span><strong>Post a new task: </strong></span>https://protectthepanda-api.onrender.com/tasks/</li>
+                <p>In the ADE send a <strong>POST</strong> request with a json in the following format:<br>
+                    &emsp;{"task": "YOUR-NEW-TASK",<br>
+                    &emsp;"time": SET-DURATION-FOR-TASK} </p>
+                <li><span><strong>Delete an existing task: </strong></span>https://protectthepanda-api.onrender.com/tasks/:id</li>
+                <p>In the ADE send a <strong>DELETE</strong> request with an empty json body.</p>
+                <li><span><strong>Mark a task a completed: </strong></span>https://protectthepanda-api.onrender.com/tasks/:id/complete</li>
+                <p>In the ADE send a <strong>PATCH</strong> request with an empty json body.<br>When the task is fetched again it will be marked a completed.</p>
+                <li><span><strong>Modify an existing task: </strong></span>https://protectthepanda-api.onrender.com/tasks/:id</li>
+                <p>In the ADE send a <strong>PATCH</strong> request with a json in the following format:<br>
+                    &emsp;{"task": "MODIFIED-TASK-NAME",<br>
+                    &emsp;"time": MODIFIED-TASK-DURATION}<br>
+                    When the task is fetched again it will show the modified task.</p>
+            </ul>
         </div>
     </main>
 </body>
