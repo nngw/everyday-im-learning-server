@@ -31,12 +31,14 @@ usersSchema.statics.signup = async function (email, password)  {
     throw Error('Password not strong enough')
   }
 
+  //Check if uses exists
   const exists = await this.findOne ({ email })
 
   if(exists) {
     throw Error('Email already exists')
   }
 
+  //Hash password and save user
   const salt = await bcrypt.genSalt(10)
 
   const hash = await bcrypt.hash(password, salt)
@@ -56,17 +58,18 @@ usersSchema.statics.login = async function (email, password) {
   const user = await this.findOne ({ email })
 
   if(!user) {
-    throw Error('Incorrect email and/or password') 
+    throw Error('Incorrect email') // TO BE CHANGED TO "Incorrect email and/or password"
   }
 
   const match = await bcrypt.compare(password, user. password)
 
   if(!match) {
-    throw Error("Incorrect email and/or password") 
+    throw Error("Incorrect password") // TO BE CHANGED TO "Incorrect email and/or password"
   }
 
   return user
 }
+
 
 
 module.exports = mongoose.model('User', usersSchema)

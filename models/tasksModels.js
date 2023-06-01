@@ -12,7 +12,8 @@ const tasksSchema = new Schema({
     required: true
   },
   completed: {
-    type: Number,
+    type: Boolean,
+    default: false,
     required: true
   },
   user_id: {
@@ -21,4 +22,4 @@ const tasksSchema = new Schema({
   }
 }, {timestamps: true})
 
-module.exports = mongoose.model('Workout', tasksSchema)
+module.exports = mongoose.model('Tasks', tasksSchema)
